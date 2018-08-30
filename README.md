@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/gchq/CyberChef.svg?branch=master)](https://travis-ci.org/gchq/CyberChef)
 [![dependencies Status](https://david-dm.org/gchq/CyberChef/status.svg)](https://david-dm.org/gchq/CyberChef)
 [![npm](https://img.shields.io/npm/v/cyberchef.svg)](https://www.npmjs.com/package/cyberchef)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fartemisbot%2FCyberChef.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fartemisbot%2FCyberChef?ref=badge_shield)
 ![](https://reposs.herokuapp.com/?path=gchq/CyberChef&color=blue)
 [![](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/gchq/CyberChef/blob/master/LICENSE)
 [![Gitter](https://badges.gitter.im/gchq/CyberChef.svg)](https://gitter.im/gchq/CyberChef?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
@@ -92,6 +93,9 @@ An installation walkthrough, how-to guides for adding new operations and themes,
  - Push your changes to your fork.
  - Submit a pull request.
 
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fartemisbot%2FCyberChef.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fartemisbot%2FCyberChef?ref=badge_large)
 
 ## Licencing
 
