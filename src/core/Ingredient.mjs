@@ -4,8 +4,8 @@
  * @license Apache-2.0
  */
 
-import Utils from "./Utils";
-import {fromHex} from "./lib/Hex";
+import Utils from "./Utils.mjs";
+import {fromHex} from "./lib/Hex.mjs";
 
 /**
  * The arguments to operations.
@@ -23,9 +23,14 @@ class Ingredient {
         this._value = null;
         this.disabled = false;
         this.hint = "";
+        this.rows = 0;
         this.toggleValues = [];
         this.target = null;
         this.defaultIndex = 0;
+        this.maxLength = null;
+        this.min = null;
+        this.max = null;
+        this.step = 1;
 
         if (ingredientConfig) {
             this._parseConfig(ingredientConfig);
@@ -45,9 +50,14 @@ class Ingredient {
         this.defaultValue = ingredientConfig.value;
         this.disabled = !!ingredientConfig.disabled;
         this.hint = ingredientConfig.hint || false;
+        this.rows = ingredientConfig.rows || false;
         this.toggleValues = ingredientConfig.toggleValues;
         this.target = typeof ingredientConfig.target !== "undefined" ? ingredientConfig.target : null;
         this.defaultIndex = typeof ingredientConfig.defaultIndex !== "undefined" ? ingredientConfig.defaultIndex : 0;
+        this.maxLength = ingredientConfig.maxLength || null;
+        this.min = ingredientConfig.min;
+        this.max = ingredientConfig.max;
+        this.step = ingredientConfig.step;
     }
 
 
@@ -95,6 +105,7 @@ class Ingredient {
             case "binaryString":
             case "binaryShortString":
             case "editableOption":
+            case "editableOptionShort":
                 return Utils.parseEscapedChars(data);
             case "byteArray":
                 if (typeof data == "string") {
@@ -104,6 +115,7 @@ class Ingredient {
                     return data;
                 }
             case "number":
+                if (data === null) return data;
                 number = parseFloat(data);
                 if (isNaN(number)) {
                     const sample = Utils.truncate(data.toString(), 10);
