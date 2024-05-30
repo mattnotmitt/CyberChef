@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-    - master
+    - 1819-search-accessibility-improvements
 
 jobs:
   main:
@@ -48,7 +48,7 @@ jobs:
       run: npx grunt copy:ghPages
 
     - name: Deploy to GitHub Pages
-      if: success() && github.ref == 'refs/heads/master'
+      if: success() && github.ref == 'refs/heads/1819-search-accessibility-improvements'
       uses: crazy-max/ghaction-github-pages@v3
       with:
         target_branch: gh-pages
