@@ -4,9 +4,9 @@
  * @license Apache-2.0
  */
 
-import Operation from "../Operation";
-import Recipe from "../Recipe";
-import Dish from "../Dish";
+import Operation from "../Operation.mjs";
+import Recipe from "../Recipe.mjs";
+import Dish from "../Dish.mjs";
 
 /**
  * Disjoin operation
@@ -58,7 +58,7 @@ class Disjoin extends Operation {
             input        = await state.dish.get(inputType),
             ings         = opList[state.progress].ingValues,
             [splitDelim, mergeDelim, ignoreErrors] = ings,
-            subRecList   = [];
+            subRecipeList   = [];
         let inputs       = [],
             i;
 
@@ -71,9 +71,9 @@ class Disjoin extends Operation {
             if (opList[i].name === "Merge" && !opList[i].disabled) {
                 break;
             } else {
-                const subRec = new Recipe();
-                subRec.addOperations(opList[i]);
-                subRecList.push(subRec);
+                const subRecipe = new Recipe();
+                subRecipe.addOperations([opList[i]]);
+                subRecipeList.push(subRecipe);
             }
         }
 
@@ -83,8 +83,8 @@ class Disjoin extends Operation {
 
         state.forkOffset += state.progress + 1;
 
-        for (i = 0; i < subRecList.length; i++) {
-            const recipe = subRecList[i];
+        for (i = 0; i < subRecipeList.length; i++) {
+            const recipe = subRecipeList[i];
 
             // Take a deep(ish) copy of the ingredient values
             const ingValues = recipe.opList.map(op => JSON.parse(JSON.stringify(op.ingValues)));
